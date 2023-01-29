@@ -5,6 +5,7 @@ class ProductManager {
         this.products = [];
     }
     addProduct(title, description, price, thumbnail, code, stock){
+        let found;
         if (title == null || description == null || price == null || thumbnail == null || code == null || stock == null){
             console.log("Por favor, completa todos los datos");
             return;
@@ -12,8 +13,12 @@ class ProductManager {
             this.products.forEach(element => {
                 if (element.code == code){
                     console.log("Ya existe un producto con este codigo");
+                    found = true;
                 }
             });
+            if(found){
+            return;
+            }
             const newProduct = new Product(title, description, price, thumbnail, code, stock, this.nextId)
             this.products.push(newProduct)
             this.nextId++
