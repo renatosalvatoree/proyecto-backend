@@ -17,6 +17,7 @@ class ProductManager {
                 }
             });
             if(found){
+            found = false;
             return;
             }
             const newProduct = new Product(title, description, price, thumbnail, code, stock, this.nextId)
